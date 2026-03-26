@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #87CEEB, #FFFFFF, #FFD700);
+            background-size: 400% 400%;
+            animation: gradient-shift 10s ease infinite;
+            color: #333;
+            overflow: hidden;
+            text-align: center;
+            background-image: url("https://www.designyourway.net/blog/wp-content/uploads/2024/04/christmas-wallpaper-from-designyourway-1200x700.jpg");
+            background-size: cover;
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 3em;
+            color: #FF0000;
+            text-shadow: 2px 2px 4px #000;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px #000; }
+            to { text-shadow: 2px 2px 4px #FFF; }
+        }
+        .tree {
+            font-size: 4em;
+            color: #228B22;
+            margin: 20px 0;
+            position: relative;
+            animation: bounce 2s ease-in-out infinite;
+            transition: transform 0.3s;
+        }
+        .tree:hover {
+            transform: scale(1.05);
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .lights {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+        }
+        .light {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: twinkle 1s infinite alternate;
+        }
+        .light:nth-child(1) { background: #FF0000; top: 0; left: 20px; }
+        .light:nth-child(2) { background: #00FF00; top: 20px; right: 0; }
+        .light:nth-child(3) { background: #0000FF; bottom: 0; left: 20px; }
+        .light:nth-child(4) { background: #FFFF00; top: 20px; left: 0; }
+        .light:nth-child(5) { background: #FF00FF; bottom: 20px; right: 20px; }
+        @keyframes twinkle {
+            from { opacity: 1; box-shadow: 0 0 5px currentColor; }
+            to { opacity: 0.5; box-shadow: 0 0 15px currentColor; }
+        }
+        .ornaments {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+        }
+        .ornament {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .ornament:nth-child(1) { background: #FF4500; top: 0; left: 10px; }
+        .ornament:nth-child(2) { background: #FFD700; top: 15px; right: 0; }
+        .ornament:nth-child(3) { background: #DC143C; bottom: 0; left: 10px; }
+        .ornament:nth-child(4) { background: #00CED1; top: 15px; left: 0; }
+        .music-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+        .music-controls button {
+            background: #FFF;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+        .snowflake {
+            position: absolute;
+            color: #FFF;
+            font-size: 1.5em;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        .message {
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #8B4513;
+            animation: fadeIn 3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .tree { font-size: 3em; }
+            .message { font-size: 1.2em; }
+            .lights, .ornaments { width: 80px; height: 80px; }
+            .light, .ornament { width: 6px; height: 6px; }
+        }
+        .countdown {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #FF0000;
+        }
+        .floating-decoration {
+            position: absolute;
+            font-size: 2em;
+            animation: float 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .star-bg {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #FFF;
+            border-radius: 50%;
+            animation: twinkle-bg 3s infinite alternate;
+        }
+        @keyframes twinkle-bg {
+            from { opacity: 0.3; }
+            to { opacity: 1; }
+        }
+        .snowman {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 3em;
+            animation: wiggle 2s ease-in-out infinite;
+        }
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+        .gift-box {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 2em;
+            cursor: pointer;
+            animation: shake 1s ease-in-out infinite;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #FFD700;
+            animation: fallConfetti 3s linear forwards;
+            pointer-events: none;
+        }
+        @keyframes fallConfetti {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        .top-star {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            animation: rotate-twinkle 3s ease-in-out infinite;
+        }
+        @keyframes rotate-twinkle {
+            0% { transform: translateX(-50%) rotate(0deg) scale(1); }
+            50% { transform: translateX(-50%) rotate(180deg) scale(1.2); }
+            100% { transform: translateX(-50%) rotate(360deg) scale(1); }
+        }
+        .moon {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            font-size: 4em;
+            color: #FFF;
+            text-shadow: 0 0 20px #FFF;
+            animation: glow-moon 4s ease-in-out infinite alternate;
+        }
+        @keyframes glow-moon {
+            from { text-shadow: 0 0 20px #FFF; }
+            to { text-shadow: 0 0 40px #FFF; }
+        }
+        .falling-gift {
+            position: absolute;
+            top: -50px;
+            font-size: 2em;
+            animation: fall 3s linear forwards;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="countdown" id="countdown">Loading...</div>
+        <h1>Merry Christmas!</h1>
+        <div class="tree" onclick="createConfetti()">
+            <div class="top-star">⭐</div>
+            🎄
+            <div class="lights">
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+            </div>
+            <div class="ornaments">
+                <div class="ornament" onclick="changeColor(this)"></div>
+                <div class="ornament" onclick="changeColor(this)"></div>
+                <div class="ornament" onclick="changeColor(this)"></div>
+                <div class="ornament" onclick="changeColor(this)"></div>
+            </div>
+            <div class="floating-decoration" style="top: 10%; left: 10%;"></div>
+            <div class="floating-decoration" style="top: 20%; right: 15%;"></div>
+            <div class="floating-decoration" style="bottom: 30%; left: 15%;"></div>
+            <div class="floating-decoration" style="bottom: 40%; right: 10%;"></div>
+        </div>
+        <div class="message">Wishing you joy, peace, and holiday cheer!</div>
+        <div class="snowman">⛄</div>
+        <div class="gift-box" onclick="giveGiftsToChildren()">🎁</div>
+        <div class="music-controls">
+            <button onclick="toggleMusic()">🔊</button>
+        </div>
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <!-- Background stars -->
+    <div class="star-bg" style="top: 10%; left: 20%;"></div>
+    <div class="star-bg" style="top: 15%; left: 70%;"></div>
+    <div class="star-bg" style="top: 30%; left: 40%;"></div>
+    <div class="star-bg" style="top: 50%; left: 80%;"></div>
+    <div class="star-bg" style="top: 60%; left: 15%;"></div>
+    <div class="star-bg" style="top: 80%; left: 50%;"></div>
+
+    <!-- Glowing moon -->
+    <div class="moon">🌙</div>
+
+    <script>
+        // Generate falling snowflakes with varying sizes and wind effect
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.textContent = '❄';
+            const size = Math.random() * 1.5 + 0.5; // Vary size between 0.5em and 2em
+            snowflake.style.fontSize = size + 'em';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            snowflake.style.animationDelay = Math.random() * 2 + 's';
+            // Add slight wind effect
+            snowflake.style.animationName = 'fallWind';
+            document.body.appendChild(snowflake);
+
+            // Remove snowflake after animation
+            setTimeout(() => {
+                snowflake.remove();
+            }, 7000);
+        }
+
+        // Create snowflakes every 200ms
+        setInterval(createSnowflake, 200);
+
+        // Function to change ornament color on click
+        function changeColor(element) {
+            const colors = ['#FF4500', '#FFD700', '#DC143C', '#00CED1', '#FF69B4', '#32CD32'];
+            element.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Function to toggle background music
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const button = event.target;
+            if (music.paused) {
+                music.play();
+                button.textContent = '🔊';
+            } else {
+                music.pause();
+                button.textContent = '🔇';
+            }
+        }
+
+        // Auto-play music on load (may be blocked by browser)
+        window.addEventListener('load', () => {
+            const music = document.getElementById('bgMusic');
+            music.volume = 0.3;
+            music.play().catch(() => {}); // Ignore if autoplay is blocked
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+
+        // Function to update Christmas countdown
+        function updateCountdown() {
+            const now = new Date();
+            const christmas = new Date(now.getFullYear(), 11, 25);
+            if (now > christmas) {
+                christmas.setFullYear(christmas.getFullYear() + 1);
+            }
+            const diff = christmas - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById('countdown').textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        // Function to create confetti effect
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        // Function to open gift box
+        function openGift() {
+            alert('🎉 Surprise! You found a virtual Christmas gift! 🎉\n\nWishing you a wonderful holiday season filled with joy, love, and laughter!');
+        }
+
+        // Function to give Christmas gifts to children
+        function giveGiftsToChildren() {
+            const children = ['Alice', 'Bob', 'Charlie', 'Diana'];
+            for (let i = 0; i < children.length; i++) {
+                const gift = document.createElement('div');
+                gift.className = 'falling-gift';
+                gift.textContent = '🎁';
+                gift.style.left = (Math.random() * 80 + 10) + '%'; // Random horizontal position
+                gift.style.animationDelay = (i * 0.5) + 's'; // Stagger the falls
+                gift.onclick = function() {
+                    alert(`🎉 A gift from Tata for ${children[i]}! 🎉\n\nWishing you a wonderful holiday season filled with joy, love, and laughter!`);
+                    gift.remove();
+                };
+                document.body.appendChild(gift);
+                setTimeout(() => {
+                    if (gift.parentNode) {
+                        gift.remove();
+                    }
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
